@@ -22,6 +22,7 @@ async function run() {
         const repoNameWithOwner = core.getInput('repo');    
         const repoOwner = core.getInput('owner');    
         const token = core.getInput('token');
+        const mainBranch = core.getInput('mainBranch') ?? "master";
         const repoName = repoNameWithOwner.replace(`${repoOwner}/`, '');
 
         const octokit = new github.GitHub(token);
@@ -90,7 +91,7 @@ async function run() {
                 return -1;
             });
 
-        const branchNamesToMerge = [...branchNames, 'master'];
+        const branchNamesToMerge = [...branchNames, mainBranch];
         let mergedBranch = branchName;
 
         for(const branchNameToMerge of branchNamesToMerge) {

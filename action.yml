@@ -17,6 +17,10 @@ inputs:
     description: 'Owner repo'
     required: true
     default: ''
+  mainBranch:
+    description: 'Main branch name'
+    required: false
+    default: 'master'
 outputs:
   time: # id of output
     description: 'The time we greeted you'
